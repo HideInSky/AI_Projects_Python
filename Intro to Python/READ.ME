@@ -1,0 +1,49 @@
+Program Goals
+Get familiar with Python syntax
+Get familiar with a Python development/execution environment
+Implement a basic AI algorithm
+Be advised:
+If you need a tutorial for Python programming, we have released Python and Numpy tutorials on Piazza Links to an external site.. Please check it out. 
+
+Summary
+This project includes two separate implementations:
+
+State space generation for the water jug puzzle (please write the code in a file called p1_statespace.py)
+Weather prediction from historical data (please write the code in a file called p1_weather.py)
+We'll walk you through the concepts and provide quite a bit of scaffolding for each of the implementations since you will be expected to complete them both in Python, which many of you do not know or haven't used in a while. Note that you're responsible for the output format (e.g., the data type, String or Boolean) of each implemented function. Please strictly follow the instructions below.
+
+IMPORTANT: Please make sure your functions do NOT have any extra debug prints. If you have any testing code, it should be contained within a main() method so it does not start to execute when the file is imported by the grading framework. This will lead to a penalty in your assignment scores.
+
+Part 1: State Space Generation
+The code for this portion should be written in a file named p1_statespace.py. You will only define the 4 Python functions in your file, following the exact same function signature and having the correct output format as discussed below. 
+
+This is a problem of the two water jugs (denoted by 0 and 1) with fixed integer size. We'll use this as an exercise to learn using Python lists.
+
+For the purposes of this assignment, we will be representing each state as a list of two ints. Please also maintain a separate list of two ints with the respective maximum capacities of the jugs.
+
+There are three operations you can perform on a jug:
+
+Fill the jug to capacity from the faucet
+Empty the jug onto the ground
+Pour into another jug until that jug is full or this jug is empty
+For this component of implementation, please implement four (4) Python functions:
+
+fill(state, max, which) — returns a copy of state which fills the jug corresponding to the index in which (0 or 1) to its maximum capacity. Do not modify state.
+empty(state, max, which) — returns a copy of state which empties the jug corresponding to the index in which (0 or 1). Do not modify state.
+xfer(state, max, source, dest) — returns a copy of state which pours the contents of the jug at index source into the jug at index dest, until source is empty or dest is full. Do not modify state. xfer is shorthand for transfer.
+succ(state, max) — prints the list of unique successor states of the current state in any order. This function will generate the unique successor states of the current state by applying fill, empty, xfer operations on the current state. (Note: You have to apply an operation at every step for generating a successor state.)
+Each of these functions should take as an argument the current state of the two water jugs as a list of two integers, as well as the maximum capacities of each jug as a list of two integers.
+
+Part 2: Weather Prediction
+The code for this portion should be written in a file named p1_weather.py.
+
+This implementation will require some basic math, file I/O, and use of some built-in Python data structures, and is a little more involved than the previous one.
+
+You'll be using a version of the k-Nearest Neighbors algorithm  Links to an external site.to predict whether we expect it to be raining in Seattle based on various weather conditions.
+
+For this component of implementation, please implement four (4) Python functions:
+
+manhattan_distance(data_point1, data_point2) – return the Manhattan distance between two dictionary data points from the data set.
+read_dataset(filename) – return a list of data point dictionaries read from the specified file.
+majority_vote(nearest_neighbors) – return a prediction of whether it is raining or not based on a majority vote of the list of neighbors.
+k_nearest_neighbors(filename, test_point, k, year_interval) – using the above functions, return the majority vote prediction for whether it's raining or not on the provided test point.

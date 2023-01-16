@@ -1,0 +1,33 @@
+Program Goals
+Deepen understanding of state space generation
+Practice implementation of search algorithms
+Summary
+We've introduced the 8-queens problem in class: place 8 queens on a chessboard such that no queen is attacking any other queen.
+
+A solution for the 8-queens problem
+
+A solution for an 8x8 board with state [2, 7, 3, 6, 0, 5, 1, 4]
+
+Recall that in the game of chess, queens attack any piece they can "see" (i.e., there is nothing between the queen and the attacking piece) in the same row, column, or diagonal.
+
+In this assignment, you will generalize this problem to a board of arbitrary (square) size and the equivalent number of queens and add a "static point" to the board. It means that at any time, there must be a queen on the static point. You only have to place the other N-1 queens on the board.
+
+Given the size of the board (N > 0) and location of the static point (0 <= static_x < N and 0 <= static_y < N), you will implement a hill-climbing algorithm to solve the problem.
+
+Program Specification
+The code for this program must be written in Python in a file called nqueens.py. You should only submit one file with the name nqueens.py, and make sure it includes all functions needed. Do not submit a Jupyter notebook .ipynb file.
+
+Your state representation must be a list of N integers, 0-indexed, representing the row the queen is occupying in each column (see figure above). For simplicity of representation, we will retain our assumption that there is a single queen per column. When you generate the successor states, there should not be any states with two queens in the same column.
+
+Goal State
+There are multiple possible configurations for a goal state, defined as a state in which no queen is attacking any other queen per the rules above. One of your tasks will be to define an evaluation function for the states such that the goal state has the lowest value (0) when the function is applied to it.
+
+Functions
+For this program you should write 5 Python functions:
+
+succ(state, static_x, static_y) -- given a state of the board, return a list of all valid successor states
+f(state) -- given a state of the board, return an integer score such that the goal state scores 0
+choose_next(curr, static_x, static_y) -- given the current state, use succ() to generate the successors and return the selected next state
+n_queens(initial_state, static_x, static_y) -- run the hill-climbing algorithm from a given initial state, return the convergence state
+n_queens_restart(n, k, static_x, static_y) -- run the hill-climbing algorithm on an n*n board with random restarts
+You may add other functions as you see fit, but these functions must be present and work as described.
